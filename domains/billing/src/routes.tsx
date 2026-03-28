@@ -1,5 +1,6 @@
 import type { RouteObject } from 'react-router-dom'
 import { InvoicePage } from './pages/InvoicePage'
+import { inventoryRoutes } from '../../inventory/src/routes.tsx'
 
 export const billingRoutes: RouteObject[] = [
   {
@@ -11,4 +12,5 @@ export const billingRoutes: RouteObject[] = [
       },
     ],
   },
+  ...inventoryRoutes,
 ]
