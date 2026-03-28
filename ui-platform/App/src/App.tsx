@@ -1,11 +1,19 @@
 import { Link, Outlet } from 'react-router-dom'
+import { domains } from './domains'
+
+const navItems = domains
+  .flatMap((d) => d.navItems)
+  .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
 
 export function App() {
   return (
     <div>
       <nav>
-        <Link to="/billing/invoices">Billing</Link>
-        <Link to="/inventory/warehouses">Inventory</Link>
+        {navItems.map((item) => (
+          <Link key={item.to} to={item.to}>
+            {item.label}
+          </Link>
+        ))}
       </nav>
       <main>
         <Outlet />

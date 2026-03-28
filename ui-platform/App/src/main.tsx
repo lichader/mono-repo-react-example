@@ -1,20 +1,22 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { AuthProvider } from '@rpeng/shared'
 import { App } from './App'
-import { billingRoutes } from '@rpeng/billing'
-import { inventoryRoutes } from '@rpeng/inventory'
+import { domains } from './domains'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    children: [...billingRoutes, ...inventoryRoutes],
+    children: domains.flatMap((d) => d.routes),
   },
 ])
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )
