@@ -27,7 +27,15 @@ pnpm typecheck
 pnpm clean
 ```
 
-There are no tests configured yet.
+```bash
+# Run all tests
+pnpm test
+
+# Watch mode
+pnpm test:watch
+```
+
+Tests use Vitest with `@testing-library/react` and jsdom. Test files are co-located with source (`*.test.ts` / `*.test.tsx`).
 
 ## Architecture
 
